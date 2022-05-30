@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import OtpContainer from "./components/otpContainer/OtpContainer";
 
 function App() {
+  const [value, setValue] = useState({
+    1: "",
+    2: "",
+    3: "",
+    4: "",
+    5: "",
+    6: "",
+  });
+
+  const handleOtpEnter = (key) => {
+    setValue((prev) => ({ ...prev, ...key }));
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <OtpContainer value={value} handleOtpEnter={handleOtpEnter} />
     </div>
   );
 }

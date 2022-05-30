@@ -1,0 +1,19 @@
+.otpContainer {
+  width: 300px;
+  margin: 20px auto;
+}
+
+.otpBox {
+  width: 30px;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 0 10px;
+  outline: none;
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  padding-bottom: 2px;
+}
+.otpBox:focus {
+  border-bottom: 1px solid #2874f0;
+}
