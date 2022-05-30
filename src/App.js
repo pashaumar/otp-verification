@@ -12,12 +12,17 @@ function App() {
     6: "",
   });
 
+  const [otpLength, setOtpLength] = useState(6);
   const handleOtpEnter = (key) => {
     setValue((prev) => ({ ...prev, ...key }));
   };
   return (
     <div className="App">
-      <OtpContainer value={value} handleOtpEnter={handleOtpEnter} />
+      <OtpContainer
+        value={value}
+        handleOtpEnter={handleOtpEnter}
+        otpLength={otpLength}
+      />
     </div>
   );
 }
