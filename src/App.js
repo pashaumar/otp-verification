@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import OtpContainer from "./components/otpContainer/OtpContainer";
 
 function App() {
   const [value, setValue] = useState({
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-    5: "",
-    6: "",
+    value: "",
   });
-
   const [otpLength, setOtpLength] = useState(6);
+
+  useEffect(() => {
+    const value = {};
+    new Array(otpLength).fill(1).forEach((item, index) => {
+      value[item + index] = "";
+    });
+    setValue({ value: "", ...value });
+  }, [otpLength]);
+
   const handleOtpEnter = (key) => {
     setValue((prev) => ({ ...prev, ...key }));
   };
