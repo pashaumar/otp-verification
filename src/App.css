@@ -2,3 +2,19 @@
   margin: 0;
   padding: 0;
 }
+.otp-text {
+  margin: 20px 0;
+  text-align: center;
+}
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #2874f0;
+  align-items: center;
+}
+.content {
+  background-color: white;
+  padding: 50px;
+}

@@ -1,0 +1,38 @@
+.container {
+  text-align: center;
+}
+button {
+  margin: 10px 0;
+  width: 280px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.verify button {
+  color: white;
+  background-color: #2874f0;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.resend {
+  font-size: 12px;
+  color: #878787;
+  margin-top: 20px;
+}
+.resend span {
+  font-size: 14px;
+  color: #2874f0;
+  font-weight: 600;
+  cursor: pointer;
+}
+.request button {
+  color: #2874f0;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from "./OtpContainer.module.css";
 
 function OtpBox(props) {
-  const { tabIndex, handleOtpEnter, value, otpLength } = props;
+  const { tabIndex, handleOtpEnter, otpInput, otpLength } = props;
 
   const [otp, setOtp] = useState({});
 
@@ -27,7 +27,7 @@ function OtpBox(props) {
     if (keyCode === 8) {
       const { tabIndex, previousElementSibling } = e.target;
       setOtp({ [`${tabIndex}`]: "" });
-      if (!otp[tabIndex]) {
+      if (!otp[tabIndex] && otp[tabIndex] !== undefined) {
         if (previousElementSibling) previousElementSibling.focus();
       }
     }
@@ -56,11 +56,11 @@ function OtpBox(props) {
         tabIndex={tabIndex}
         onChange={handleChange}
         maxLength={1}
-        value={value[tabIndex]}
+        value={otpInput[tabIndex]}
         onKeyDown={handleKeyDown}
         onPaste={handlePaste}
         style={{
-          borderColor: value[tabIndex] ? "#2874f0" : "",
+          borderColor: otpInput[tabIndex] ? "#2874f0" : "",
         }}
       />
     </>
