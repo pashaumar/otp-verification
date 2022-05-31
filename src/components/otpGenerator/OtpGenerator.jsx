@@ -34,7 +34,7 @@ function OtpGenerator(props) {
           Verify
         </button>
       </div>
-      <div className={classes.or}>OR</div>
+      <div>OR</div>
       <div className={classes.request}>
         <button disabled={localStorage.getItem("otp")} onClick={generateOtp}>
           Request OTP
