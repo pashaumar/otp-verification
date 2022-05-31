@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./OtpGenerator.module.css";
+import Modal from "../modal/Modal";
 
 function OtpGenerator(props) {
   const { otpValue, otpLength, handleResetOtp } = props;
+  const [isRequestOtp, setIsRequestOtp] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [message, setMessage] = useState("");
 
   const generateOtp = () => {
     createOtp();
+    setIsRequestOtp(true);
   };
 
   const resendOtp = () => {
@@ -18,17 +23,24 @@ function OtpGenerator(props) {
     localStorage.setItem("otp", otp);
   };
 
+  const hideModal = () => {
+    setShowModal(false);
+  };
+
   const verifyOtp = () => {
     const otp = localStorage.getItem("otp");
     if (parseInt(otp) === parseInt(otpValue)) {
-      alert("otp is correct");
+      setMessage("Verified");
+      setShowModal(true);
     } else {
-      alert("Incorrect otp");
+      setMessage("Incorrect otp");
+      setShowModal(true);
     }
   };
 
   return (
     <div className={classes.container}>
+      {showModal && <Modal message={message} hideModal={hideModal} />}
       <div className={classes.verify}>
         <button disabled={!(otpLength === otpValue.length)} onClick={verifyOtp}>
           Verify
@@ -36,7 +48,7 @@ function OtpGenerator(props) {
       </div>
       <div>OR</div>
       <div className={classes.request}>
-        <button disabled={localStorage.getItem("otp")} onClick={generateOtp}>
+        <button disabled={isRequestOtp} onClick={generateOtp}>
           Request OTP
         </button>
       </div>
