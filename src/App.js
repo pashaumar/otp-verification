@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import OtpContainer from "./components/otpContainer/OtpContainer";
 import OtpGenerator from "./components/otpGenerator/OtpGenerator";
+import Modal from "./components/modal/Modal";
 
 function App() {
   const otpLength = 6;
   const [otpInput, setOtpInput] = useState({});
   const [otpValue, setOtpValue] = useState("");
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     localStorage.removeItem("otp");
@@ -37,8 +39,18 @@ function App() {
     setOtpInput((prev) => ({ ...prev, ...key }));
   };
 
+  const hideModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="App">
+      {showModal && (
+        <Modal
+          message="Visit Local Storage for requested otp."
+          hideModal={hideModal}
+        />
+      )}
       <div className="content">
         <div className="otp-text">Please enter the OTP sent</div>
         <OtpContainer
